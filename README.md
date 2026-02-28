@@ -265,4 +265,4 @@ Issues? Check our GitHub issues or email support@vulai.dev
 
 ---
 
-**Built with ❤️ for secure code generation**
+**Make Sure your vibecoded App is safe - VulAi is here for you**
