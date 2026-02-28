@@ -77,6 +77,26 @@ npm run webpack-watch
 
 Then in VSCode: `F5` to launch extension in development mode.
 
+### Web Frontend Setup
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Development server
+npm run dev
+
+# Production build
+npm run build
+npm start
+```
+
+Web frontend available at `http://localhost:3000`
+
+Try the interactive demo at `/demo` with pre-loaded vulnerable code examples!
+
 ### Docker Setup
 
 ```bash
@@ -88,9 +108,9 @@ Starts backend at `http://localhost:8000`
 ## Architecture
 
 ```
-VSCode Extension
-    ↓ REST API
-FastAPI Backend
+VSCode Extension                  Web Frontend
+    ↓ REST API                    ↓ HTTP Calls
+FastAPI Backend & API
     ├─ Static Analyzer (fast pattern matching)
     ├─ LLM Analyzer (Claude API)
     ├─ Risk Scorer (weighted vulnerability classification)
@@ -205,6 +225,16 @@ VulAi/
 │   │   └── utils/
 │   ├── package.json
 │   └── tsconfig.json
+├── frontend/
+│   ├── app/
+│   │   ├── api/proxy/       # Backend proxy routes
+│   │   ├── demo/            # Interactive demo page
+│   │   ├── about/           # Technical documentation
+│   │   └── page.tsx         # Landing page
+│   ├── components/          # React components
+│   ├── lib/                 # Utilities and types
+│   ├── package.json
+│   └── tailwind.config.ts
 └── docs/
 ```
 
@@ -220,6 +250,12 @@ pytest tests/
 ```bash
 cd vscode-extension
 npm test
+```
+
+**Web Frontend:**
+```bash
+cd frontend
+npm run build  # Verification build
 ```
 
 ## Deployment
