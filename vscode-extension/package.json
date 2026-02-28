@@ -1,0 +1,104 @@
+{
+  "name": "vulai",
+  "displayName": "VulAI - Security Co-pilot",
+  "description": "AI-powered DevSecOps analysis and secure code generation",
+  "version": "0.1.0",
+  "publisher": "vulai",
+  "license": "MIT",
+  "repository": "https://github.com/vulai/vulai",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "security",
+    "code-analysis",
+    "vulnerability",
+    "ai",
+    "devsecops",
+    "refactor"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vulai.analyze",
+        "title": "VulAI: Analyze Code"
+      },
+      {
+        "command": "vulai.refactor",
+        "title": "VulAI: Generate Secure Refactor"
+      },
+      {
+        "command": "vulai.showReport",
+        "title": "VulAI: Show Security Report"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "vulai.analyze",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v"
+      }
+    ],
+    "configuration": {
+      "title": "VulAI",
+      "properties": {
+        "vulai.backendUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "URL of the VulAI backend API"
+        },
+        "vulai.enableAutoAnalysis": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically analyze code on save"
+        },
+        "vulai.analysisDelay": {
+          "type": "number",
+          "default": 1000,
+          "description": "Delay before analyzing after code change (ms)"
+        },
+        "vulai.showScoreInStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show security score in status bar"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "jest",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "webpack": "webpack --mode development",
+    "webpack-watch": "webpack --mode development --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.0",
+    "ts-loader": "^9.5.1",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1"
+  },
+  "dependencies": {
+    "axios": "^1.6.2"
+  }
+}

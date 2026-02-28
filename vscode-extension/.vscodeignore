@@ -1,0 +1,12 @@
+.vscodeignore
+node_modules/
+dist/
+test/
+src/
+.git/
+.gitignore
+.eslintignore
+.eslintrc.json
+tsconfig.json
+webpack.config.js
+*.test.ts
